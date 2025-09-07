@@ -25,7 +25,7 @@ import psutil
 import logging
 
 # Import all research-grade modules for integration testing
-from app.core.timescales import build_timescales, TimeScales, UncertaintyBounds
+from app.core.timescales import build_timescales
 from app.core.astronomy import ChartResult, compute_chart_research_grade
 from app.core.house import ResearchHouseResult, compute_houses_research_grade
 from app.core.aspects import compute_aspects_research_grade, ResearchAspectResult, PrecisionMath
