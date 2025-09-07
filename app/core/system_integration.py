@@ -190,7 +190,7 @@ class IntegrationTestSuite:
     def create_test_chart(self) -> Tuple[TimeScales, Dict[str, float]]:
         """Create a standard test chart for integration testing"""
         # December 21, 2023, 12:00 UTC - Winter Solstice for predictable coordinates
-        time_scales = build_timescales_research(
+        time_scales = build_timescales(
             "2023-12-21", "12:00:00", "UTC", 0.0
         )
         
@@ -215,7 +215,7 @@ class IntegrationTestSuite:
             
             results.append(ModuleTestResult(
                 module_name="timescales",
-                test_name="build_timescales_research",
+                test_name="build_timescales",
                 passed=True,
                 execution_time_ms=time_ms,
                 memory_usage_mb=memory_mb,
@@ -366,7 +366,7 @@ class IntegrationTestSuite:
             chart_a = compute_chart_research_grade(time_scales_a, location_a)
             
             # Second chart 6 months later
-            time_scales_b = build_timescales_research(
+            time_scales_b = build_timescales(
                 "2024-06-21", "12:00:00", "UTC", 0.0
             )
             location_b = {"latitude": 51.5074, "longitude": -0.1278, "elevation_m": 25.0}  # London
