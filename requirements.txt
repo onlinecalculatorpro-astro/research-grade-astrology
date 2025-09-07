@@ -5,7 +5,7 @@ scipy>=1.7.0
 # Astronomical calculations
 astropy>=5.0.0
 skyfield>=1.40
-erfa>=2.0.0
+pyerfa>=2.0.0
 
 # System monitoring and performance
 psutil>=5.8.0
