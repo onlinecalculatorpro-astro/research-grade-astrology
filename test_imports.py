@@ -9,7 +9,7 @@ print("Testing Research-Grade Module Imports...")
 print("=" * 50)
 
 try:
-    from app.core.timescales import TimeScales, UncertaintyBounds
+    from app.core.timescales import TimeScales, UncertaintyBounds, build_timescales
     print("✓ timescales.py imported successfully")
 except Exception as e:
     print(f"✗ timescales.py import failed: {e}")
@@ -50,8 +50,18 @@ print("Import test complete!")
 # Test basic functionality
 print("\nTesting Basic Functionality...")
 try:
-    from app.core.timescales import build_timescales_research
-    time_scales = build_timescales_research("2023-12-21", "12:00:00", "UTC", 0.0)
+    from app.core.timescales import build_timescales
+    time_scales = build_timescales("2023-12-21", "12:00:00", "UTC", 0.0)
     print(f"✓ TimeScales creation successful: JD_TT = {time_scales.jd_tt}")
+    print(f"✓ Precision level: {time_scales.input_precision_level.value}")
+    print(f"✓ Uncertainty bounds: {time_scales.uncertainties.total_uncertainty_seconds:.6f}s")
 except Exception as e:
     print(f"✗ TimeScales creation failed: {e}")
+
+print("\nTesting Available Functions...")
+try:
+    from app.core import timescales
+    available_functions = [name for name in dir(timescales) if not name.startswith('_') and callable(getattr(timescales, name))]
+    print(f"✓ Available functions in timescales: {available_functions}")
+except Exception as e:
+    print(f"✗ Function listing failed: {e}")
